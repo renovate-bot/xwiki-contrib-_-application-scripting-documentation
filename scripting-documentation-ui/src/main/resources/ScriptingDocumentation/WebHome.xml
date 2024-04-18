@@ -647,7 +647,7 @@ Table styles
     overflow: hidden;
     text-overflow: ellipsis;
 }
-#javadocdiv th.colFirst, #javadocdiv th.colLast, #javadocdiv th.colOne, #javadocdiv .constantValuesContainer th {
+#javadocdiv th.colFirst, #javadocdiv tr:first-child &gt; th.colSecond, #javadocdiv th.colLast, #javadocdiv th.colOne, #javadocdiv .constantValuesContainer th {
     background:#dee3e9;
     border-top:1px solid #9eadc0;
     border-bottom:1px solid #9eadc0;
