@@ -676,10 +676,7 @@ Table styles
     margin-left:0px;
 }
 #javadocdiv table.overviewSummary td.colFirst, #javadocdiv table.overviewSummary th.colFirst,
-#javadocdiv table.overviewSummary td.colOne, #javadocdiv table.overviewSummary th.colOne {
-    width:35%;
-    vertical-align:middle;
-}
+#javadocdiv table.overviewSummary td.colOne, #javadocdiv table.overviewSummary th.colOne,
 #javadocdiv table.packageSummary td.colFirst, #javadocdiv table.overviewSummary th.colFirst {
     width:35%;
     vertical-align:middle;
