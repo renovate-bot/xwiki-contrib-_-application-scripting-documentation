@@ -400,13 +400,77 @@ Heading styles
     margin:0 0 6px -8px;
     padding:2px 5px;
 }
+
 #javadocdiv ul.blockList ul.blockList ul.blockList li.blockList h3 {
-    background-color:#dee3e9;
-    border-top:1px solid #9eadc0;
-    border-bottom:1px solid #9eadc0;
     margin:0 0 6px -8px;
     padding:2px 5px;
 }
+
+#javadocdiv .summary-list, #javadocdiv .summary-list &gt; li,
+#javadocdiv .member-list, #javadocdiv .member-list &gt; li {
+    list-style: none;
+    margin-left: 0;
+    padding-left: 0;
+}
+
+#javadocdiv .summary-list &gt; li {
+    background-color: #f9f9f9;
+    border: 1px solid gray;
+    padding: 1em;
+    margin-bottom: 1em;
+}
+
+#javadocdiv .member-list &gt; li {
+    border-left: 1px solid #9eadc0;
+    border-right: 1px solid #9eadc0;
+    border-bottom: 1px solid #9eadc0;
+    margin-bottom: 1em;
+}
+
+#javadocdiv .member-list &gt; li &gt; section {
+    background: white;
+}
+
+#javadocdiv .summary-list &gt; li &gt; section h2,
+#javadocdiv .member-list &gt; li &gt; section h2 {
+    font-size: 1.3em;
+    font-weight: bold;
+    padding-top: 0;
+    margin-top: 0;
+    color: #4D5860;
+}
+
+#javadocdiv ul.blockList ul.blockList ul.blockList li.blockList h3,
+#javadocdiv .summary-list &gt; li &gt; section &gt; div &gt; h2,
+#javadocdiv .summary-list &gt; li &gt; section &gt; div &gt; h3,
+#javadocdiv .member-list &gt; li &gt; section &gt; h3 {
+    background-color:#dee3e9;
+    border-top:1px solid #9eadc0;
+    border-bottom:1px solid #9eadc0;
+    margin-top:0;
+}
+
+#javadocdiv .member-list &gt; li &gt; section &gt; h3,
+#javadocdiv .summary-list &gt; li &gt; section &gt; div &gt; h3 {
+  padding: 2px 5px;
+  font-size: 1.3em;
+  color: #4D5860;
+}
+
+#javadocdiv .member-list &gt; li &gt; section &gt; h3 {
+  margin-left:-1rem;
+}
+
+#javadocdiv .member-list &gt; li &gt; section {
+  padding-left:1rem;
+}
+
+#javadocdiv .summary-list &gt; li &gt; section &gt; div:not(.caption) {
+    border-left:1px solid #9eadc0;
+    border-right:1px solid #9eadc0;
+    border-bottom:1px solid #9eadc0;
+}
+
 #javadocdiv ul.blockList ul.blockList li.blockList h3 {
     padding:0;
     margin:15px 0;
@@ -414,6 +478,7 @@ Heading styles
 #javadocdiv ul.blockList li.blockList h2 {
     padding:0px 0 20px 0;
 }
+
 /*
 Page layout container styles
 */
@@ -472,7 +537,7 @@ List styles
     display:inline;
     list-style:none;
 }
-#javadocdiv ul.inheritance li ul.inheritance {
+#javadocdiv ul.inheritance li ul.inheritance, #javadocdiv div.inheritance div.inheritance {
     margin-left:15px;
     padding-left:15px;
     padding-top:1px;
@@ -485,7 +550,24 @@ List styles
     list-style:none;
     margin-bottom:25px;
 }
-#javadocdiv ul.blockList ul.blockList li.blockList, #javadocdiv ul.blockList ul.blockListLast li.blockList {
+#javadocdiv .details-list {
+    margin-left: 0;
+    padding-left: 0;
+    list-style: none;
+}
+
+#javadocdiv .details-list &gt; li {
+    margin-top: 2em;
+}
+
+#javadocdiv .details-list &gt; li &gt; section &gt; h2 {
+   margin-top: 1em;
+   margin-bottom: 1em;
+   color: #4D5860;
+}
+
+#javadocdiv ul.blockList ul.blockList li.blockList, #javadocdiv ul.blockList ul.blockListLast li.blockList,
+#javadocdiv .details-list &gt; li {
     padding:0px 20px 5px 10px;
     border:1px solid #9eadc0;
     background-color:#f9f9f9;
@@ -553,10 +635,10 @@ Table styles
 #javadocdiv .tableSubHeadingColor {
     background-color: #EEEEFF;
 }
-#javadocdiv .altColor {
+#javadocdiv .altColor, #javadocdiv .even-row-color {
     background-color:#eeeeef;
 }
-#javadocdiv .rowColor {
+#javadocdiv .rowColor, #javadocdiv .odd-row-color {
     background-color:#ffffff;
 }
 #javadocdiv .overviewSummary td, #javadocdiv .packageSummary td, #javadocdiv .contentContainer ul.blockList li.blockList td, #javadocdiv .summary td, #javadocdiv .classUseContainer td, #javadocdiv .constantValuesContainer td {
@@ -574,7 +656,8 @@ Table styles
     overflow: hidden;
     text-overflow: ellipsis;
 }
-#javadocdiv td.colOne a:link, #javadocdiv td.colOne a:active, #javadocdiv td.colOne a:visited, #javadocdiv td.colOne a:hover, #javadocdiv td.colFirst a:link, #javadocdiv td.colFirst a:active, #javadocdiv td.colFirst a:visited, #javadocdiv td.colFirst a:hover, #javadocdiv td.colLast a:link, #javadocdiv td.colLast a:active, #javadocdiv td.colLast a:visited, #javadocdiv td.colLast a:hover, #javadocdiv .constantValuesContainer td a:link, #javadocdiv .constantValuesContainer td a:active, #javadocdiv .constantValuesContainer td a:visited, #javadocdiv .constantValuesContainer td a:hover {
+#javadocdiv td.colOne a, #javadocdiv td.colFirst a, #javadocdiv td.colLast a, #javadocdiv .constantValuesContainer td a,
+#javadocdiv .col-first a, #javadocdiv .col-last a, #javadocdiv .col-second, #javadocdiv .col-constructor-name {
     font-weight:bold;
 }
 #javadocdiv td.colFirst, #javadocdiv th.colFirst {
@@ -638,6 +721,71 @@ Formatting effect styles
 }
 #javadocdiv .strong {
     font-weight:bold;
+}
+
+#javadocdiv .type-signature, #javadocdiv .member-signature {
+    font-family: monospace;
+    margin-bottom: 1em;
+}
+
+#javadocdiv .notes {
+    padding-top: 1em;
+    padding-bottom: 1em;
+    margin: 0;
+}
+
+#javadocdiv .notes &gt; dd {
+    margin-top: 1em;
+    margin-bottom: 1em;
+    margin-left: 2em;
+}
+
+#javadocdiv .notes &gt; dd &gt; ul {
+    margin-left: 0;
+    padding-left: 0;
+}
+
+.three-column-summary {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.two-column-summary {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.table-header {
+    background: #dee3e9;
+    font-weight: bold;
+    border-top: 1px solid #9eadc0;
+    border-bottom: 1px solid #9eadc0;
+}
+
+#javadocdiv .table-tabs {
+    display: none;
+}
+
+.summary-table &gt; div {
+  padding: 1ex;
+  line-height: 1.428571429;
+  vertical-align: top;
+}
+
+#javadocdiv .summary-table + .summary-table, #javadocdiv .inherited-list {
+    margin-top: 1em;
+}
+
+#javadocdiv .inherited-list {
+    padding-right: 1rem;
+    padding-left: 1rem;
+    padding-bottom: 1rem;
+}
+
+#javadocdiv .inherited-list h2,
+#javadocdiv .inherited-list h3 {
+    margin-left: -1rem;
+    margin-right: -1rem;
 }</code>
     </property>
     <property>
