@@ -588,7 +588,7 @@ require(['jquery','angular','angular-loading-bar'],
     }
 
     function buildJavadocURL(parsedUrl) {
-      return 'http://nexus.xwiki.org/nexus/service/local/repositories/public/archive/'
+      return 'https://nexus.xwiki.org/nexus/service/local/repositories/public/archive/'
         + parsedUrl.groupId.replace(/\./g,'/') + '/' + parsedUrl.artifactId + '/' + parsedUrl.version + '/'
         + parsedUrl.artifactId + '-' + parsedUrl.version + '-javadoc.jar/!'
         + parsedUrl.jdocPath;
