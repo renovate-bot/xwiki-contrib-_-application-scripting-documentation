@@ -546,7 +546,7 @@ require(['jquery','angular','angular-loading-bar'],
 
     var _location = null, _base = null, _hash = null, _params = null, _element = $('html'),
         absUrlRE = /^https?:\/\//i,
-        hostUrlRE = /^(https?:\/\/[^/]+)/i
+        hostUrlRE = /^(https?:\/\/[^/]+)/i,
         xwikiUrlRE = /^https?:\/\/[^/]*\.xwiki\.org/i,
         parentRE = /[\-\w]+\/\.\.\//,
         extensionUrlRE = /^https?:\/\/extensions\.xwiki\.org\/?\?id=([^:]+):([^:]+)(?::([^:]+))?:::.+\/apidocs(\/[^?]+)\?is-external=true$/,
