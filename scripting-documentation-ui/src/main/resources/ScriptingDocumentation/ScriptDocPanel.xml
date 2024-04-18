@@ -733,7 +733,10 @@ require(['jquery','angular','angular-loading-bar'],
             }
           }
         }
-        scrollToHash(_hash);
+        var hash = location.hash.substring(1);
+        if (hash) {
+          scrollToHash(hash);
+        }
       },
 
       handleClick : function(event) {
