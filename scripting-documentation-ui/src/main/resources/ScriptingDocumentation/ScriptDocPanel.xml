@@ -595,8 +595,12 @@ require(['jquery','angular','angular-loading-bar'],
     }
 
     function scrollToHash(hash) {
-      var anchor = (hash) ? $('*[name="' + hash + '"]')[0] : null,
-          target = (hash &amp;&amp; anchor) ? $(anchor).offset().top : _element.offset().top,
+      var anchor = hash ? document.getElementById(hash) || $('*[name="' + hash + '"]')[0]: null;
+      if (!anchor) {
+        return;
+      }
+
+      var target = (hash &amp;&amp; anchor) ? $(anchor).offset().top : _element.offset().top,
           distance = target - $(document).scrollTop(),
           speed = Math.sqrt(Math.abs(distance)) * 5;
 
@@ -623,14 +627,9 @@ require(['jquery','angular','angular-loading-bar'],
     }
 
     function updateBrowserLocation() {
-      if (_location) {
-        if (_hash) {
-          $location.search('url', _location + '#' + _hash);
-        } else {
-          $location.search('url', _location);
-        }
-      } else {
-        $location.search('url', null);
+      $location.search('url', _location || null);
+      if (_hash) {
+        $location.hash(_hash);
       }
     }
 
@@ -660,7 +659,9 @@ require(['jquery','angular','angular-loading-bar'],
           window.open(value);
         }
       } else if (_base) {
-        if (url.startsWith('/')) {
+        if (!url) {
+          url = _location;
+        } else if (url.startsWith('/')) {
           url = getHost(_base) + url;
         } else {
           url = reduceURL(_base + '/' + url);
