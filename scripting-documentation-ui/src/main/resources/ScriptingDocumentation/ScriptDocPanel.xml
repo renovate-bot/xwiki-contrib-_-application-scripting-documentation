@@ -353,7 +353,7 @@ require.config({
         'angular-loading-bar': '$services.webjars.url('angular-loading-bar/0.7.1/loading-bar.min')'
     },
     shim: {
-        'angular' : {'exports' : 'angular'},
+        'angular' : {'exports' : 'angular', 'deps': ['jquery']},
         'angular-loading-bar' : {'deps' : ['angular', 'css!angular-loading-bar']}
     }
 });
