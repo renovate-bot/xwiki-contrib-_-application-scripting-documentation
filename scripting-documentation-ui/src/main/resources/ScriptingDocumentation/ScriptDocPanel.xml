@@ -733,7 +733,7 @@ require(['jquery','angular','angular-loading-bar'],
             }
           }
         }
-        var hash = location.hash.substring(1);
+        var hash = decodeURIComponent(location.href.split('#')[1] || "");
         if (hash) {
           scrollToHash(hash);
         }
