@@ -32,7 +32,8 @@
   <version>1.4.2-SNAPSHOT</version>
   <packaging>pom</packaging>
   <name>Scripting Documentation - Parent POM</name>
-  <description>Scripting Documentation - Parent POM</description>
+  <description>This extension provides scripting documentation by dynamically searching the
+current wiki instance for available bindings</description>
   <properties>
     <xwiki.issueManagement.jira.id>SCRIPTDOC</xwiki.issueManagement.jira.id>
     <xwiki.release.jira.skip>false</xwiki.release.jira.skip>

@@ -1,7 +1,20 @@
-Scripting Documentation
-=======================
+# Scripting Documentation
 
-The concept of this application is to provide scripting documentation by dynamically searching the current wiki 
+This extension provides scripting documentation by dynamically searching the
+current wiki instance for available bindings.
+
+* Project Lead: [Raphaël Jakse](https://www.xwiki.org/xwiki/bin/view/XWiki/rjakse)
+* [Documentation & Download](https://extensions.xwiki.org/xwiki/bin/view/Extension/Scripting Documentation Application)
+* [Issue Tracker](https://jira.xwiki.org/browse/SCRIPTDOC)
+* Communication: [Forum](https://forum.xwiki.org), [Chat](https://dev.xwiki.org/xwiki/bin/view/Community/Chat)
+* [Development Practices](https://dev.xwiki.org/xwiki/bin/view/Community/DevelopmentPractices)
+* Minimal XWiki version supported: 13.10
+* License: LGPL 2.1
+* Translations: N/A
+* Sonar Dashboard: N/A
+* Continuous Integration Status: N/A
+
+This application provides scripting documentation by dynamically searching the current wiki
 instance for available bindings. Using the information from Maven pom's, those bindings get linked to their respective
 documentations both on the XWiki Extension Repository and the XWiki Nexus Repository that hold Javadoc packages.
 Primitive bindings and non maven compliant ones, like velocity variable and tools could also be documented using simple
