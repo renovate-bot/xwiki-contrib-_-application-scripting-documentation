@@ -544,7 +544,7 @@ require(['jquery','angular','angular-loading-bar'],
                    ['xwikiService', '$location',
                     function(xwikiService, $location) {
 
-    var _location = null, _base = null, _hash = null, _params = null, _element = $('html'),
+    var _base = null, _params = null, _element = $('html'),
         absUrlRE = /^https?:\/\//i,
         hostUrlRE = /^(https?:\/\/[^/]+)/i,
         xwikiUrlRE = /^https?:\/\/[^/]*\.xwiki\.org/i,
@@ -594,53 +594,50 @@ require(['jquery','angular','angular-loading-bar'],
         + parsedUrl.jdocPath;
     }
 
-    function scrollToHash(hash) {
-      var anchor = hash ? document.getElementById(hash) || $('*[name="' + hash + '"]')[0]: null;
-      if (!anchor) {
+    function scrollToHash() {
+      const hash = $location.hash()
+      if (!hash) {
         return;
       }
-
-      var target = (hash &amp;&amp; anchor) ? $(anchor).offset().top : _element.offset().top,
-          distance = target - $(document).scrollTop(),
-          speed = Math.sqrt(Math.abs(distance)) * 5;
-
-      if ((hash &amp;&amp; anchor) || distance &lt; 0) { // No scroll down to top
-        $('html,body').animate({
-          scrollTop: target
-        }, speed);
+      const element = document.getElementById(hash);
+      if (element) {
+        element.scrollIntoView();
       }
     }
 
     function setNewLocation(url, hash) {
-      if (url != _location || hash != _hash) {
-        if (url) {
-          _base = url.substring(0, url.lastIndexOf('/'));
-          _location = url;
-          _hash = hash;
+      if (hash) {
+        if ($location.hash() === hash) {
+          scrollToHash();
         } else {
-          _location = null;
-          _base = null;
-          _hash = null;
+          $location.hash(hash);
         }
-        updateBrowserLocation();
+      } else {
+          if ($location.hash()) {
+            $location.hash("");
+          }
+          document.scrollingElement.scrollTop = 0;
       }
-    }
 
-    function updateBrowserLocation() {
-      $location.search('url', _location || null);
-      if (_hash) {
-        $location.hash(_hash);
+
+      if (url) {
+        _base = url.substring(0, url.lastIndexOf('/'));
+        if ($location.search().url !== url) {
+          $location.search('url', url);
+          return;
+        }
       }
     }
 
     function setLocation(value) {
       if (!value || value == '' || typeof value !== "string") {
-        setNewLocation(null)
+        setNewLocation(null);
         return;
       }
 
       var pval = value.split('#'),
-          url = pval[0], hash = pval[1] ? decodeURIComponent(pval[1]) : null;
+          url = pval[0],
+          hash = pval[1] ? decodeURIComponent(pval[1]) : null;
 
       if (url.startsWith('&amp;')) {
         _params = url;
@@ -660,22 +657,14 @@ require(['jquery','angular','angular-loading-bar'],
         }
       } else if (_base) {
         if (!url) {
-          url = _location;
+          url = $location.search().url;
         } else if (url.startsWith('/')) {
           url = getHost(_base) + url;
         } else {
           url = reduceURL(_base + '/' + url);
         }
-        
-        if (_location == url) {
-          // set new hash only
-          _hash = hash;
-          scrollToHash(hash);
-          updateBrowserLocation();
-        } else {
-          // set new URL location based on relative URL
-          setNewLocation(url, hash);
-        }
+
+        setNewLocation(url, hash);
       } else {
         setNewLocation(null);
       }
@@ -711,8 +700,9 @@ require(['jquery','angular','angular-loading-bar'],
         } else {
           // Getter
           var url = xwikiService.proxyURL;
-          if (_location) {
-            url += encodeURIComponent(_location);
+          var location = $location.search().url;
+          if (location) {
+            url += encodeURIComponent(location);
           }
           if (_params) {
             url += _params;
@@ -729,14 +719,11 @@ require(['jquery','angular','angular-loading-bar'],
             var url = comments[0].data.trim();
             if (isURLAbsolute(url)) {
               setNewLocation(url, null);
-              updateBrowserLocation();
+              return;
             }
           }
         }
-        var hash = decodeURIComponent(location.href.split('#')[1] || "");
-        if (hash) {
-          scrollToHash(hash);
-        }
+        scrollToHash();
       },
 
       handleClick : function(event) {
@@ -873,7 +860,10 @@ require(['jquery','angular','angular-loading-bar'],
   app.run(['javadocService', '$rootScope', '$location', function(javadocService, $rootScope, $location) {
     $rootScope.$on('$locationChangeSuccess', function(event) {
       var url = $location.search().url;
-      url = (url) ? url : null; // avoid setter to act as getter since url could be undefined
+      var hash = $location.hash();
+      if (url &amp;&amp; hash) {
+        url += hash.startsWith("#") ? hash : ("#" + hash);
+      }
       javadocService.location(url);
     });
     $(document).ready( function() {
@@ -888,7 +878,7 @@ require(['jquery','angular','angular-loading-bar'],
               state = false;
           } else if (!state &amp;&amp; !scrolled) {
               container.css({position:'relative'});
-              state = true;             
+              state = true;
           }
       });
     });
