@@ -29,7 +29,7 @@
   </parent>
   <groupId>org.xwiki.contrib.scriptingdocumentation</groupId>
   <artifactId>scripting-documentation</artifactId>
-  <version>1.4.2-SNAPSHOT</version>
+  <version>1.5.0</version>
   <packaging>pom</packaging>
   <name>Scripting Documentation - Parent POM</name>
   <description>This extension provides scripting documentation by dynamically searching the
@@ -42,7 +42,7 @@ current wiki instance for available bindings</description>
     <connection>scm:git:git://github.com/xwiki-contrib/application-scripting-documentation.git</connection>
     <developerConnection>scm:git:git@github.com:xwiki-contrib/application-scripting-documentation.git</developerConnection>
     <url>https://github.com/xwiki-contrib/application-scripting-documentation/tree/master</url>
-    <tag>HEAD</tag>
+    <tag>scripting-documentation-1.5.0</tag>
   </scm>
   <developers>
     <developer>
