@@ -4,7 +4,7 @@ This extension provides scripting documentation by dynamically searching the
 current wiki instance for available bindings.
 
 * Project Lead: [Raphaël Jakse](https://www.xwiki.org/xwiki/bin/view/XWiki/rjakse)
-* [Documentation & Download](https://extensions.xwiki.org/xwiki/bin/view/Extension/Scripting Documentation Application)
+* [Documentation & Download](https://extensions.xwiki.org/xwiki/bin/view/Extension/Scripting%20Documentation%20Application)
 * [Issue Tracker](https://jira.xwiki.org/browse/SCRIPTDOC)
 * Communication: [Forum](https://forum.xwiki.org), [Chat](https://dev.xwiki.org/xwiki/bin/view/Community/Chat)
 * [Development Practices](https://dev.xwiki.org/xwiki/bin/view/Community/DevelopmentPractices)
